@@ -1,7 +1,7 @@
-const { run } = require ('./functions/basic.js'), fs = require('fs');
-fs.readFile('main.cpp', function (err, code) {
-    if (err) throw err;
-    run(1000, 'pp', 17, code.toString(), '1\r\n1\r\n===\r\n2\r\n', { bool: false, output: '1\r\n===\r\n2\r\n', ans: '1\r\n===\r\n2\r\n' }, '', function (data) {
-        console.log(data);
-    });
+const { run } = require ('./functions/basic.js'), options = require('./options.json');
+console.log(options);
+options.input = options.input.substring(1, options.input.length-1).replaceAll('\\n', '\r\n');
+console.log(options);
+run(options.timelimit, options.lang, options.ver, options.code, options.input, { bool: false }, '', function (data) {
+    console.log(data);
 });
